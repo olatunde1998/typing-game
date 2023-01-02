@@ -3,42 +3,30 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 const UnorderList = styled(motion.ul)`
-list-style-type: none;
-
+  list-style-type: none;
 `;
-const ListItem = styled(motion.li)`
+const ListItem = styled(motion.li)``;
 
-
-`;
 const ListItemError = styled(motion.li)`
   color: red;
-margin: 30px;
-
+  margin: 30px;
 `;
 const ListItemAccuracy = styled(motion.li)`
   color: green;
-margin: 30px;
+  margin: 30px;
+`;
 
-`
-
-const Result = ({ errors, accuracyPercentage, total }) => {
+const Result = ({ errors, accuracyPercentage, total, wordTyped }) => {
   const initial = { opacity: 0 };
   const animate = { opacity: 1 };
   const duration = { duration: 0.3 };
 
   return (
     <UnorderList>
-      {/* <ListItem
-        initial={initial}
-        animate={animate}
-        transition={{ ...duration, delay: 0 }}
-      >
-        Result
-      </ListItem> */}
       <ListItemError
         initial={initial}
         animate={animate}
-        transition={{ ...duration, delay: 0.5}}
+        transition={{ ...duration, delay: 0.5 }}
       >
         Errors: {errors}
       </ListItemError>
@@ -54,7 +42,14 @@ const Result = ({ errors, accuracyPercentage, total }) => {
         animate={animate}
         transition={{ ...duration, delay: 1.6 }}
       >
-        Total words: {total}
+        Expected Total words: {total}
+      </ListItem>
+      <ListItem
+        initial={initial}
+        animate={animate}
+        transition={{ ...duration, delay: 1.6 }}
+      >
+        Total words typed: {wordTyped}
       </ListItem>
     </UnorderList>
   );
