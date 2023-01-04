@@ -87,6 +87,7 @@ const wordsGenerate = faker.random.words(10);
           setIsOpen={setIsOpen}
           wordTyped={typingWord.length}
           totalWords={words.length}
+          time={time}
         />
       )}
     </EasyLevelWrapper>

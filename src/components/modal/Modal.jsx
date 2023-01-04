@@ -14,6 +14,7 @@ margin: 0 0px 20px 0px;
 text-align: left;
 `;
 
+
 const ListItemError = styled(motion.li)`
   color: red;
   margin: 0 0px 20px 0px;
@@ -26,7 +27,7 @@ const ListItemAccuracy = styled(motion.li)`
   text-align: left;
 `;
 
-const Modal = ({ setIsOpen, errors, accuracyPercentage, totalWords, wordTyped }) => {
+const Modal = ({ setIsOpen, errors, time, accuracyPercentage, totalWords, wordTyped }) => {
   const initial = { opacity: 0 };
   const animate = { opacity: 1 };
   const duration = { duration: 0.3 };
@@ -51,6 +52,13 @@ const Modal = ({ setIsOpen, errors, accuracyPercentage, totalWords, wordTyped })
               >
                 Errors: {errors}
               </ListItemError>
+              <ListItem
+                initial={initial}
+                animate={animate}
+                transition={{ ...duration, delay: 1.6 }}
+              >
+                Time elapsed: {time}
+              </ListItem>
               <ListItemAccuracy
                 initial={initial}
                 animate={animate}
@@ -72,6 +80,7 @@ const Modal = ({ setIsOpen, errors, accuracyPercentage, totalWords, wordTyped })
               >
                 Total words typed: {wordTyped}
               </ListItem>
+
             </UnorderList>
           </div>
           <div className={styles.modalActions}>
