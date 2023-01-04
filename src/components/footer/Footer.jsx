@@ -1,18 +1,19 @@
-import React from "react";
 import styled from "styled-components";
 import { SiFacebook, SiGithub, SiLinkedin, SiTwitter } from "react-icons/si";
 
 const FooterWrapper = styled.footer`
-  margin-top: 100px;
+  margin-top: 60px;
   padding-bottom: 0px;
   margin-bottom: 0px;
   border-top: 1px solid grey;
 `;
 const FooterLogo = styled.div`
-  // border: 1px solid red;
   margin-top: 20px;
   text-align: left;
   margin-left: 30px;
+`;
+const Contact = styled.h3`
+  margin-bottom: 30px;
 `;
 const Info = styled.div``;
 const UnorderList = styled.ul`
@@ -27,19 +28,39 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <FooterLogo>
-        <SiFacebook  color="white" size={30} />
-        <SiLinkedin color="white" size={30} />
-        <SiTwitter color=" #00acee" size={30} />
-        <a href="https://www.github.com/olatunde1998">
-          <SiGithub color="white" size={30}></SiGithub>
+        <Contact>Contact</Contact>
+        <SiFacebook size={30} />
+        <SiLinkedin style={{ marginLeft: "10px" }} size={30} />
+        <SiTwitter style={{ marginLeft: "10px" }} size={30} />
+        <a
+          href="https://www.github.com/olatunde1998"
+          style={{ textDecoration: "none" }}
+        >
+          <SiGithub
+            color="#00acee"
+            style={{ marginLeft: "10px" }}
+            size={30}
+          ></SiGithub>
         </a>
       </FooterLogo>
       <Info>
         <UnorderList>
           <List>+234-8133-6427-98</List>
-          <List>olatunde336@gmail.com</List>
           <List>
-            <a href="https://www.github.com/olatunde1998">Github</a>
+            <a
+              href="https://olatunde336@gmail.com"
+              style={{ textDecoration: "none", color: "#00acee" }}
+            >
+              olatunde336@gmail.com
+            </a>
+          </List>
+          <List>
+            <a
+              href="https://www.github.com/olatunde1998"
+              style={{ textDecoration: "none", color: "#00acee" }}
+            >
+              Github
+            </a>
           </List>
         </UnorderList>
       </Info>

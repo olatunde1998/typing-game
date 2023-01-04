@@ -1,56 +1,48 @@
-import { Input } from "components/input/InputComponent";
+// import { Input } from "components/input/InputComponent";
 import { PictureLogo } from "components/PictureComponent/Picture";
-import ResultButton from "components/restartButton/ResultButton";
-import Result from "components/result/Result";
-import React, { useState } from "react";
+// import ResultButton from "components/restartButton/ResultButton";
 import styled from "styled-components";
+// import styles from "components/easyLevel/Easy.module.css";
+// import Modal from "components/modal/Modal";
+// import { useState } from "react";
 
 const DisplayContainer = styled.div`
   position: relative;
   max-width: 768px;
   margin: 0 auto;
-//   border: 1px solid yellow;
+  // border: 7px solid yellow;
 `;
 
 const UserTyping = styled.p`
   color: red;
-  border: 2px solid blue;
+  border: 0px solid blue;
   position: absolute;
   top: 30px;
   left: 16px;
   color: blue;
-  max-width: 768px;
-  
+  height: 200px;
+  font-size: 20px;
 `;
-const InputWrapper = styled.div`
+// const InputWrapper = styled.div`
+// `
 
-`
+const DisplayBoard = ({typingWord}) => {
+  // const [isOpen, setIsOpen] = useState(false);
 
-const DisplayBoard = () => {
-
-  const [resultDetails, setResultDetails] = useState(true);
-  const [typingWord, setTypingWord] = useState(true);
-
-
-
-  const handleResult = () => {
-    setResultDetails(<Result />)
-  };
-
-  const handleTypingWord = (event) =>{
-      setTypingWord(event.target.value);
-    }
 
   return (
     <DisplayContainer>
       <UserTyping>{typingWord}</UserTyping>
       <PictureLogo src="assets/img/image_processing20210430-23168-1vozqu9.gif" />
-      <InputWrapper>
+      {/* <InputWrapper>
       <Input onChange={handleTypingWord} placeholder='type here...' type="text"/>
-      </InputWrapper>
-      <ResultButton handleResult={handleResult} />
-      {resultDetails}
-      
+      </InputWrapper> */}
+      {/* <main>
+      <button className={styles.primaryBtn} onClick={() => setIsOpen(true)}>
+        Result
+      </button>
+      {isOpen && <Modal setIsOpen={setIsOpen}  wordTyped={typingWord.length} totalWords={words.length} />}
+    </main>  */}
     </DisplayContainer>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { MdRefresh } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 const Button = styled.button`
     background: grey;
@@ -16,9 +17,9 @@ margin: 4px 2px;
 border-radius: 50%;
 `
 
-const RestartButton = ({refreshGame}) => {
+const RestartButton = () => {
   return (
-    <Button onClick={refreshGame}><MdRefresh size={40}/></Button>
+    <Link to="/"><Button><MdRefresh size={40}/></Button></Link>
   )
 }
 

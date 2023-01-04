@@ -11,7 +11,7 @@ const Timer = () => {
         setMinutes(minutes+1);
         setSeconds(0);
       }
-    }, 500);
+    }, 1000);
     return ()=> clearInterval(timer)
   });
 
