@@ -40,6 +40,7 @@ const EasyLevel = () => {
         Result
       </button>
     );
+    setInputField(true)
     if (!time) {
       setTime(<Timer />);
       setWords(wordsGenerate);
@@ -73,6 +74,7 @@ const EasyLevel = () => {
         handleWordGenerate={handleWordGenerate}
         inputField={inputField}
         time={time}
+        refreshButton={refreshButton}
       />
       <div className={styles.textEditor}>
         <div className={styles.sentences}>{words}</div>
