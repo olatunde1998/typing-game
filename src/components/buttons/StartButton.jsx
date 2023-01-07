@@ -4,7 +4,7 @@ import { MdArrowRight } from "react-icons/md";
 
 
 const Button = styled.button`
-background-color: #04AA6D;
+background-color: #185adb;
 border: none;
 color: white;
 padding: 10px;
@@ -14,6 +14,7 @@ display: inline-block;
 font-size: 10px;
 margin: 4px 2px;
 border-radius: 50%;
+
 `
 
 const StartButton = ({startGame}) => {

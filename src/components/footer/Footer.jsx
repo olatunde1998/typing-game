@@ -14,7 +14,7 @@ const FooterLogo = styled.div`
 `;
 const Contact = styled.h3`
   margin-bottom: 30px;
-`;
+`
 const Info = styled.div``;
 const UnorderList = styled.ul`
   list-style-type: none;
@@ -28,19 +28,16 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <FooterLogo>
+        
         <Contact>Contact</Contact>
-        <SiFacebook size={30} />
-        <SiLinkedin style={{ marginLeft: "10px" }} size={30} />
-        <SiTwitter style={{ marginLeft: "10px" }} size={30} />
+        <SiFacebook   size={30} />
+        <SiLinkedin style={{marginLeft: "10px"}}  size={30} />
+        <SiTwitter style={{marginLeft: "10px"}}  size={30} />
         <a
           href="https://www.github.com/olatunde1998"
           style={{ textDecoration: "none" }}
         >
-          <SiGithub
-            color="#00acee"
-            style={{ marginLeft: "10px" }}
-            size={30}
-          ></SiGithub>
+          <SiGithub color= "#00acee" style={{marginLeft: "10px"}} size={30}></SiGithub>
         </a>
       </FooterLogo>
       <Info>
@@ -64,6 +61,7 @@ const Footer = () => {
           </List>
         </UnorderList>
       </Info>
+      
     </FooterWrapper>
   );
 };

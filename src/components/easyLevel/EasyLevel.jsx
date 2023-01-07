@@ -3,9 +3,8 @@ import HeroSection from "components/heroSection/HeroSection";
 import DisplayBoard from "components/displayBoard/DisplayBoard";
 import { useState } from "react";
 import { faker } from "@faker-js/faker";
-import { Input } from "components/input/InputComponent";
 import Timer from "components/timer/Timer";
-import RestartButton from "components/restartButton/RestartButton";
+import RestartButton from "components/buttons/RestartButton";
 import MuiNavBar from "components/muiNavBar/MuiNavBar";
 import styles from "components/easyLevel/Easy.module.css";
 import Modal from "components/modal/Modal";
@@ -14,80 +13,96 @@ const EasyLevelWrapper = styled.div`
   width: 100%;
 `;
 const DisplayBoardWrapper = styled.div`
-  border-top: 1px solid grey;
+  margin: 2px;
+  width: 70%;
 `;
 const InputWrapper = styled.div``;
 
-
 const EasyLevel = () => {
-  // const [isOpen, setIsOpen] = useState(false);
   const [inputField, setInputField] = useState(true);
-  const [words, setWords] = useState();
-  const [time, setTime] = useState();
+  const [words, setWords] = useState(true);
+  const [time, setTime] = useState(false);
   const [refreshButton, setRefreshButton] = useState(false);
   const [resultButton, setResultButton] = useState(true);
-  const [typingWord, setTypingWord] = useState(true);
+  const [typingWord, setTypingWord] = useState(" ");
   const [isOpen, setIsOpen] = useState(false);
-  // const [pauseButton, setPauseButton] = useState(true);
-  // const [startButton, setStartButton] = useState(true);
 
-
-  // const [displayContainer, setDisplayContainer] = useState()
+  // var timer;
+  // const handlePauseToggle = () => {
+  //   clearInterval(timer);
+  // };
+  const wordsGenerate = faker.random.words(10);
 
   const handleWordGenerate = () => {
-const wordsGenerate = faker.random.words(10);
-    if (inputField === false && inputField === true) return
-    setWords(wordsGenerate);
-    setInputField(
-      <InputWrapper>
-        <Input
-          onChange={handleTypingWord}
-          placeholder="type here..."
-          type="text"
-        />
-      </InputWrapper>
-    );
+    if (inputField === false && inputField === true) return;
     setResultButton(
-      <button className={styles.primaryBtn} onClick={() => setIsOpen(true)}>
+      <button className={styles.primaryBtn} onClick={handleResult}>
         Result
       </button>
     );
-    setTime(<Timer />);
+    if (!time) {
+      setTime(<Timer />);
+      setWords(wordsGenerate);
+    }
     setRefreshButton(<RestartButton />);
-    // setPauseButton(<RestartButton />);
+  };
+
+  const handleRefresh = () => {
+    if (inputField === false && inputField === true) return;
+
+    const wordsGenerate = faker.random.words(10);
+    setWords(wordsGenerate);
+    setTime(false);
+    setResultButton(false);
   };
 
   const handleTypingWord = (event) => {
     setTypingWord(event.target.value);
   };
 
+  const handleResult = () => {
+    setIsOpen(true);
+  };
+
   return (
     <EasyLevelWrapper>
       <MuiNavBar easy="Easy" intermediate="Intermediate" hard="Hard" />
-      <h3>Level:  Easy </h3>
+      <h3>Level: Easy </h3>
       <HeroSection
-        wordsCreate={words}
-        refreshButton={refreshButton}
+        handleRefresh={handleRefresh}
         handleWordGenerate={handleWordGenerate}
         inputField={inputField}
         time={time}
-        // pauseButton={pauseButton}
       />
-      <DisplayBoardWrapper>
-        <DisplayBoard
-          handleTypingWord={handleTypingWord}
-          typingWord={typingWord}
-          words={words}
-        />
-      </DisplayBoardWrapper>
-      {inputField}
+      <div className={styles.textEditor}>
+        <div className={styles.sentences}>{words}</div>
+        <DisplayBoardWrapper>
+          <DisplayBoard
+            handleTypingWord={handleTypingWord}
+            typingWord={typingWord}
+          />
+          <InputWrapper>
+            <div className={styles.textArea}>
+              <textarea
+                className={styles.userEditor}
+                name="w3review"
+                onChange={handleTypingWord}
+                placeholder=" type here ...."
+              ></textarea>
+            </div>
+          </InputWrapper>
+        </DisplayBoardWrapper>
+      </div>
       {resultButton}
+
       {isOpen && (
         <Modal
           setIsOpen={setIsOpen}
           wordTyped={typingWord.length}
           totalWords={words.length}
           time={time}
+          words={words}
+          typingWord={typingWord}
         />
       )}
     </EasyLevelWrapper>

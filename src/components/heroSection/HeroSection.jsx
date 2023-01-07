@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import StartButton from "components/restartButton/StartButton";
-
+import StartButton from "components/buttons/StartButton";
+import { MdRefresh } from "react-icons/md";
 
 const Container = styled.div`
   // border: 1px solid yellow;
@@ -8,27 +8,38 @@ const Container = styled.div`
   justify-content: space-around;
   margin-top: 30px;
 `;
-
-const Sentences = styled.p`
-  max-width: 300px;
-  margin: 0 auto;
-  //padding: 20px;
-  line-height: 32px;
+const Button = styled.button`
+  background: grey;
+  background-color: white;
+  border: none;
+  color: grey;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px 2px;
+  border-radius: 50%;
 `;
 
-
-const HeroSection = ({wordsCreate, refreshButton, handleWordGenerate, time}) => {
-  
+const HeroWrapper = styled.div`
+  // border: 2px solid red;
+  @media (min-width: 768px) {
+    max-width: 768px;
+    margin: 10px auto;
+  }
+`;
+const HeroSection = ({ handleRefresh, handleWordGenerate, time }) => {
   return (
-    <div>
+    <HeroWrapper>
       <Container>
-        {refreshButton}
+        <Button onClick={handleRefresh}>
+          <MdRefresh size={40} />
+        </Button>
         {time}
-        <StartButton startGame={handleWordGenerate}  />
-        {/* {pauseButton} */}
+        <StartButton startGame={handleWordGenerate} />
       </Container>
-      <Sentences>{wordsCreate}</Sentences>
-    </div>
+    </HeroWrapper>
   );
 };
 
